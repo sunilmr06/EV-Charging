@@ -69,7 +69,7 @@ def generate_route_stations(current_lat, current_lng, dest_lat, dest_lng):
                 offline_chargers=0,
                 is_open=True,
                 amenities="Food Court,WiFi,Restrooms,Tea Shop",
-                image="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=600&q=80"
+                image_url="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=600&q=80"
             )
 
 def get_smart_recommendation(current_lat, current_lng, dest_lat=None, dest_lng=None, battery_percentage=100, connector_type=None):

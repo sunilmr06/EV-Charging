@@ -113,3 +113,18 @@ class RecommendationTestCase(TestCase):
         )
         self.assertIsNotNone(station)
         self.assertEqual(station.name, "Incompatible Station")
+
+    def test_smart_recommendation_highway_routing(self):
+        # Pass dest_lat and dest_lng to trigger dynamic route station generation (to Mysore)
+        station, reason, metrics = get_smart_recommendation(
+            current_lat=12.9740,
+            current_lng=77.6100,
+            dest_lat=12.3052,
+            dest_lng=76.6552,
+            battery_percentage=50,
+            connector_type="CCS2"
+        )
+        # Verify that highway stops were successfully generated in the database
+        highway_stations = ChargingStation.objects.filter(name__contains="Highway")
+        self.assertTrue(highway_stations.exists())
+        self.assertIsNotNone(station)
